@@ -1,2 +1,18 @@
-# vue-calendar-demo
-做个vue的日历玩玩
+# vue-chess
+
+> A Vue.js Chess
+
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+```
+
+For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).

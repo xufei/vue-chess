@@ -95,20 +95,20 @@
         </defs>
 
         <g>
-            <rect x="{{chessboard.offsetX}}" y="{{chessboard.offsetY}}"
-                width="{{width}}" height="{{height}}"
+            <rect v-bind:x="chessboard.offsetX" v-bind:y="chessboard.offsetY"
+                v-bind:width="width" v-bind:height="height"
                 fill="none" stroke="#000000" stroke-width="3"></rect>
-            <path v-for="path in chessboard.pathArr" fill="none" stroke="#000000" :d="path"></path>
+            <path v-for="path in chessboard.pathArr" fill="none" stroke="#000000" v-bind:d="path"></path>
         </g>
 
-        <use v-for="chess in game.chesses" x="{{chessX(chess.x)}}" y="{{chessY(chess.y)}}"
+        <use v-for="chess in game.chesses" v-bind:x="chessX(chess.x)" v-bind:y="chessY(chess.y)"
             xlink:href="{{symbol(chess)}}"
             v-on:click="game.currentPlayer.select(chess)"></use>
         <use v-for="position in game.moveablePlaces" xlink:href="#canGo"
-            x="{{canGoX(position.x)}}" y="{{canGoX(position.y)}}"
+            v-bind:x="canGoX(position.x)" v-bind:y="canGoX(position.y)"
             v-on:click="game.currentPlayer.move(position)"></use>
         <use v-for="position in game.chessUnderAttack" xlink:href="#canAttack"
-            x="{{canAttackX(position.x)}}" y="{{canAttackY(position.y)}}"
+            v-bind:x="canAttackX(position.x)" v-bind:y="canAttackY(position.y)"
             v-on:click="game.currentPlayer.attack(position)"></use>
     </svg>
 </template>
@@ -127,11 +127,14 @@ const colors = {
 const types = ["blank", "soldier", "cannon", "chariot", "horse", "staff", "guard", "general"];
 
 
+var game = new Game();
+var chessboard = new ChessBoard();
+
 export default {
     data () {
         return {
-            game: new Game(),
-            chessboard: new ChessBoard()
+            game,
+            chessboard
         }
     },
 
